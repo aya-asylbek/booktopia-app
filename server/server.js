@@ -25,7 +25,7 @@ app.get('/search', async (req, res) => {
   
     try {
       const apiResponse = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(q)}&maxResults=20`
+         `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(q)}&maxResults=20&key=${process.env.GOOGLE_API_KEY}`
       );
       const booksData = await apiResponse.json();
   
@@ -46,7 +46,8 @@ app.get('/search', async (req, res) => {
       res.status(500).json({ error: 'Something went wrong' });
     }
   });
-      
+  console.log('Google API Key:', process.env.GOOGLE_API_KEY);
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
