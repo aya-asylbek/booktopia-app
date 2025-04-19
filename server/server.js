@@ -46,7 +46,7 @@ app.get('/search', async (req, res) => {
       res.status(500).json({ error: 'Something went wrong' });
     }
   });
-  console.log('Google API Key:', process.env.GOOGLE_API_KEY);
+  
 
 
 const PORT = process.env.PORT || 3000;
