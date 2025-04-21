@@ -1,0 +1,4 @@
+DB_USER=tpl522_13
+DB_HOST=localhost
+DB_DATABASE=booktopia
+DB_PORT=5432
