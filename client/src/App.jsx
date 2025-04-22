@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import SearchBar from "./components/SearchBar";
-import BookList from "./components/BookList";
+import SearchBar from "./components/SearchBar.jsx";
+import BookList from "./components/BookList.jsx";
+
 
 const App = () => {
   const [books, setBooks] = useState([]);
@@ -11,8 +12,9 @@ const App = () => {
 
     try {
       const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=10`
+        `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=10&key=${apiKey}`
       );
+      
 
       if (!response.ok) {
         throw new Error("Failed to fetch books");
