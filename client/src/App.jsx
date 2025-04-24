@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import Header from "./components/Header";
+import Header from "./components/Header.jsx";
 import SearchBar from "./components/SearchBar.jsx";
 import BookList from "./components/BookList.jsx";
+import './App.css'; 
+
 
 
 const App = () => {
