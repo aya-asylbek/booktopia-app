@@ -23,10 +23,10 @@ const App = () => {
 
       const data = await response.json();
       setBooks(data.items || []);
-      setError(null); // Clear error if request is successful
+      setError(null);  
     } catch (err) {
       setError("Something went wrong. Please try again.");
-      console.error(err); // Log the error for debugging purposes
+      console.error(err); // Log the error 
     }
   };
 
@@ -35,7 +35,7 @@ const App = () => {
       <h1>📚 Booktopia</h1>
       <SearchBar onSearch={handleSearch} />
       
-      {error && <p style={{ color: "red" }}>{error}</p>} {/* Show error message if any */}
+      {error && <p style={{ color: "red" }}>{error}</p>} 
       
       <BookList books={books} />
     </div>
