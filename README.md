@@ -11,7 +11,7 @@
 
 A modern web app for book discovery and library management using the Google Books API.
 
-![Booktopia Screenshot](./screenshot.png) <!-- Add actual screenshot file later -->
+
 
 
 
@@ -45,3 +45,74 @@ A modern web app for book discovery and library management using the Google Book
 git clone https://github.com/aya-asylbek/booktopia-app.git
 
 cd booktopia-app
+
+Install dependencies using concurrent setup:
+npm install
+
+cd client && npm install
+
+Set up PostgreSQL database:
+
+
+# Create database
+createdb booktopia
+
+# Import dump file
+pg_restore -d booktopia booktopia_dump.sql
+Create .env file:
+
+env
+DB_URL=postgres://youruser:yourpassword@localhost:5432/booktopia
+GOOGLE_BOOKS_API_KEY=your_api_key
+PORT=3001
+Start development servers concurrently:
+
+
+npm run dev
+
+Deployment
+
+
+The app is deployed on Render using:
+
+Frontend: Static site deployment
+
+Backend: Web service deployment
+
+
+Project Structure
+booktopia-app/
+├── client/          # React frontend
+├── server/          # Express backend
+├── booktopia_dump.sql  # Database schema + sample data
+├── package.json     # Concurrent scripts
+└── README.md
+
+API Documentation
+
+Google Books API Integration
+javascript
+// Example search endpoint
+app.get('/api/books', async (req, res) => {
+  const { query } = req.query;
+  const response = await axios.get(
+    `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${process.env.GOOGLE_BOOKS_API_KEY}`
+  );
+  res.json(response.data.items);
+});
+
+Contributing
+
+Fork the repository
+
+Create feature branch: git checkout -b feature/new-feature
+
+Commit changes: git commit -m 'Add awesome feature'
+
+Push to branch: git push origin feature/new-feature
+
+Open a Pull Request
+
+License
+MIT License
+
