@@ -1,3 +1,4 @@
+/* My header */
 .app-header {
     background-color: #6c9bcf;
     color: #fff;
@@ -9,5 +10,38 @@
     font-size: 2.5rem;
     font-family: 'Arial', sans-serif;
   }
+
+/* my books will be in cards */
+
+.book-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px;
+  width: 200px;
+  text-align: center;
+}
+
+.book-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.book-card .book-details {
+  margin-top: 12px;
+}
+
+.book-card h3 {
+  font-size: 18px;
+  color: #333;
+}
+
+.book-card p {
+  color: #777;
+  font-size: 14px;
+}
+
   
   
