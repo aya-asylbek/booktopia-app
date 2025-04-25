@@ -34,7 +34,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>📚 Booktopia</h1>
+        <Header />
       <SearchBar onSearch={handleSearch} />
       
       {error && <p style={{ color: "red" }}>{error}</p>} 
