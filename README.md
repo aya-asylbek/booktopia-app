@@ -1,118 +1,202 @@
-    BOOKTOPIA 🪴📚 – Cozy reads, endless discovery.
-🌸 Booktopia is a cozy, reader-friendly web app that makes discovering books feel like stepping into a literary utopia.
-🔍 Using a third-party API, it allows users to explore titles by author, keyword, or genre in a space designed to feel warm, welcoming, and effortless.
-🛋️ With its clean layout and intuitive flow, Booktopia invites readers to get lost in stories and find their next great read.
-📖✨ It’s more than just a search tool—it’s where your love of books meets your idea of paradise.
+📚 Booktopia App - Final Project Plan
+GitHub: Booktopia App Repository
+Table of Contents
 
+Project Objective
 
+Tech Stack
 
-[![Deployed on Render](https://img.shields.io/badge/deployed%20on-render-%2300B5E2)](https://https://booktopia-app-z.onrender.com) 
+Installation Instructions
 
+Features
 
-A modern web app for book discovery and library management using the Google Books API.
+Future Plans
 
+Database Schema
 
+Wireframe
 
+Work Milestones
 
+User Flow and Wireframes
 
-## Technologies
+Style Guide
 
-**Frontend:**  
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)  
-**Backend:**  
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)  
-![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)  
-**Database:**  
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)  
-**Tools:**  
-![Render](https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)  
-![Concurrently](https://img.shields.io/badge/Concurrently-4A4A4A?style=for-the-badge)
+1. 📑 Project Objective
+Booktopia is a cozy, user-friendly web app designed to help readers discover their next great read. By using the Google Books API, users can search for books by author, title, and genre. With its intuitive interface, Booktopia provides a seamless book discovery experience, where readers can save their favorite books and explore new titles in a welcoming, minimalist design.
 
+2. 🛠️ Tech Stack
 
-## Features
+Tool	Role
+React.js	Frontend Library
+Node.js	Backend Framework
+Express.js	Web Framework
+PostgreSQL	Database
+Google Books API	API for Book Data
+Render	Deployment
+3. 💻 Installation Instructions
+Clone the repository
 
-- 🔍 Real-time book search with Google Books API
-- 📚 Save favorite books to your collection
-- 🎨 Clean, accessible interface with high contrast
-- ⚡ Full-stack architecture with React + Express
-- 📦 Database setup using PostgreSQL dump file
-
-
-## Installation
-
-1. Clone the repository:
-```bash
+bash
+Copy
+Edit
 git clone https://github.com/aya-asylbek/booktopia-app.git
-
 cd booktopia-app
+Install Dependencies
+Backend:
 
-Install dependencies using concurrent setup:
+bash
+Copy
+Edit
+cd backend
 npm install
+Frontend:
 
-cd client && npm install
+bash
+Copy
+Edit
+cd frontend
+npm install
+Set Up PostgreSQL
+Create the database:
 
-Set up PostgreSQL database:
+bash
+Copy
+Edit
+CREATE DATABASE booktopia;
+Configure Environment Variables
+Create a .env file and add your API keys and database credentials.
 
+Run the App
+Backend:
 
-# Create database
-createdb booktopia
+bash
+Copy
+Edit
+cd backend
+node server.js
+Frontend:
 
-# Import dump file
-pg_restore -d booktopia booktopia_dump.sql
-Create .env file:
+bash
+Copy
+Edit
+cd frontend
+npm start
+4. ✨ Features
+Book Search: Users can search for books by title or author.
 
-env
-DB_URL=postgres://youruser:yourpassword@localhost:5432/booktopia
-GOOGLE_BOOKS_API_KEY=your_api_key
-PORT=3001
-Start development servers concurrently:
+Book List: Displays books from search results.
 
+Save Books: Users can save their favorite books.
 
-npm run dev
+Minimalist Design: Clean, user-friendly interface.
 
-Deployment
+User Registration (Future): Users can create accounts to save their books.
 
+5. 🚀 Future Plans
+User Authentication: Users can log in and save books.
 
-The app is deployed on Render using:
+Advanced Book Management: Categorize books as "Favorites", "To Read", and "Finished".
 
-Frontend: Static site deployment
+Book Downloads: Users can download books in PDF or EPUB format.
 
-Backend: Web service deployment
+6. 🗃️ Database Schema
+Books Table
+sql
+Copy
+Edit
+CREATE TABLE books (
+  book_id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  author VARCHAR(255),
+  genre VARCHAR(100),
+  google_book_id VARCHAR(100) UNIQUE,
+  cover_image_url TEXT
+);
+Favorites Table
+sql
+Copy
+Edit
+CREATE TABLE favorites (
+  id SERIAL PRIMARY KEY,
+  book_id INTEGER REFERENCES books(book_id),
+  user_id INTEGER REFERENCES users(user_id)
+);
+Users Table (Future)
+sql
+Copy
+Edit
+CREATE TABLE users (
+  user_id SERIAL PRIMARY KEY,
+  username VARCHAR(100),
+  email VARCHAR(255),
+  password TEXT
+);
+7. 🖼️ Wireframe
+Landing Page: Search bar and book list.
 
+User Profile: Display saved books, categorized.
 
-Project Structure
-booktopia-app/
-├── client/          # React frontend
-├── server/          # Express backend
-├── booktopia_dump.sql  # Database schema + sample data
-├── package.json     # Concurrent scripts
-└── README.md
+Book Card: Shows book details like title, author, and cover image.
 
-API Documentation
+8. 🛠️ Work Milestones
+Week 1:
+Set up the Node.js backend with Express and PostgreSQL.
 
-Google Books API Integration
-javascript
-// Example search endpoint
-app.get('/api/books', async (req, res) => {
-  const { query } = req.query;
-  const response = await axios.get(
-    `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${process.env.GOOGLE_BOOKS_API_KEY}`
-  );
-  res.json(response.data.items);
-});
+Integrate Google Books API.
 
-Contributing
+Build initial React app and wireframe design.
 
-Fork the repository
+Deploy the app to Render.
 
-Create feature branch: git checkout -b feature/new-feature
+Week 2:
+Create basic UI components for search results.
 
-Commit changes: git commit -m 'Add awesome feature'
+Implement error handling and validation.
 
-Push to branch: git push origin feature/new-feature
+Start working on user registration feature.
 
-Open a Pull Request
+Week 3:
+Finalize database schema and connect frontend with backend.
 
-License
-MIT License
+Implement user authentication (if time permits).
 
+Week 4:
+Bug fixes, UI adjustments, and deployment readiness.
+
+Finalize README documentation.
+
+9. 🚶‍♂️ User Flow and Wireframes
+User Flow:
+
+User lands on the homepage.
+
+User searches for books by title or author.
+
+Book results are displayed.
+
+User saves books to their profile (if registered).
+
+Wireframes:
+
+Landing Page: Includes a search bar and book list.
+
+User Profile Page: Displays the list of saved books (with registration).
+
+Book Cards: Displays book details like title, author, and cover image.
+
+10. 🎨 Style Guide
+Audience:
+Book lovers and readers who want to organize and discover new books.
+
+App Category:
+Books, Entertainment, Personal Library
+
+Colors:
+Main Color: Soft Blue (#6C9BCF)
+
+Accent Color: Light Yellow (#F7D774)
+
+Background: Light Gray (#F9F9F9)
+
+Text: Dark Gray (#333333)
