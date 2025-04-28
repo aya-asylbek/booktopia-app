@@ -73,8 +73,7 @@ CREATE TABLE favorites (
   book_id INTEGER REFERENCES books(book_id)
 );
 
-
-Installation & Setup
+## Installation & Setup
 
 1️⃣ Clone the Repository
 
@@ -122,7 +121,7 @@ Then run:
 
 npm run dev
 
-Wireframes & User Flow
+## Wireframes & User Flow
 
 
  Future Enhancements
@@ -134,7 +133,7 @@ Save books to a personal library (Favorites, Finished, To Read)
 Book Download Feature: (PDF/EPUB format).
 
 
-Acknowledgements
+## Acknowledgements
 
 A big THANK YOU to:
 
