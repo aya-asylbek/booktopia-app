@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import BookCard from './BookCard';
+import BookCard from '../components/BookCard'; 
 
 test('renders book card with correct content', () => {
   const book = {
