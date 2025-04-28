@@ -1,9 +1,8 @@
-📚 Booktopia App
-Welcome to Booktopia – your cozy, user-friendly web app to discover your next great read!
+# 📚 Booktopia App
+Welcome to Booktopia – your cozy, user-friendly web app to discover your next great read!  
 Booktopia uses the Google Books API to help users search, save, and explore books easily.
 
 [Live Demo (Coming Soon)](https://your-livdemo-link.com) | [GitHub Repository](https://github.com/aya-asylbek/booktopia-app)
-
 
 ## 📖 Table of Contents
 - [About Booktopia](#about-booktopia)
@@ -13,46 +12,42 @@ Booktopia uses the Google Books API to help users search, save, and explore book
 - [Installation & Setup](#installation--setup)
 - [Wireframes & User Flow](#wireframes--user-flow)
 - [Future Enhancements](#future-enhancements)
+- [Acknowledgements](#acknowledgements)
 
+---
 
-📘 About Booktopia
-Booktopia makes book discovery seamless and fun!
+## 📘 About Booktopia
+Booktopia makes book discovery seamless and fun!  
 Users can search by author or title, view book covers, and save their favorite books — all inside a welcoming, minimalist design.
 
-🐣 Technology Stack
-Frontend:
+---
 
-Backend:+
+## 🐣 Technology Stack
+- **Frontend**: ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+- **Backend**: ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) + ![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
+- **Database**: ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+- **API**: ![Google Books API](https://img.shields.io/badge/Google%20Books%20API-4285F4?style=for-the-badge&logo=google&logoColor=white)
+- **Concurrent Execution**: ![Concurrently](https://img.shields.io/badge/Concurrently-FF6F61?style=for-the-badge)
+- **Deployment**: ![Render](https://img.shields.io/badge/Render-00A9E0?style=for-the-badge&logo=render&logoColor=white)
 
-Database:
+---
 
-API:
+## ⭐ Features
+- ✅ Search for books by title or author using the Google Books API.
+- ✅ View book details (title, author, cover image).
+- ✅ Save books to a personal library (Favorites, Finished, To Read).
+- ✅ Minimalist UI with a clean and intuitive experience.
 
-Concurrent Execution:
+**Upcoming Features**:  
+- Login/Registration  
+- Book Download Options
 
-Deployment:
+---
 
-⭐ Features
-✅ Search for books by title or author using the Google Books API.
+## 🗃️ Database Schema
+📌 Full database structure is available in `booktopia_dump.sql`.
 
-✅ View book details (title, author, cover image).
-
-✅ Save books to a personal library (Favorites, Finished, To Read).
-
-✅ Minimalist UI with a clean and intuitive experience.
-
-Upcoming Features:
-
-Login/Registration
-
-Book Download Options
-
-🗃️ Database Schema
-📌 Full database structure is available in booktopia_dump.sql.
-
-sql
-Copy
-Edit
+```sql
 -- Books Table
 CREATE TABLE books (
   book_id SERIAL PRIMARY KEY,
@@ -82,7 +77,7 @@ CREATE TABLE favorites (
 
 bash
 Copy
-Edit
+Edit`
 git clone https://github.com/aya-asylbek/booktopia-app.git
 cd booktopia-app
 2️⃣ Install Dependencies
@@ -159,4 +154,5 @@ Techtonica for mentorship.
 My collaborators & peers for support.
 
 The developer community for guidance.
+
 
