@@ -1,3 +1,162 @@
-# 📚 Booktopia App
-Welcome to Booktopia – your cozy, user-friendly web app to discover your next great read!  
+📚 Booktopia App
+Welcome to Booktopia – your cozy, user-friendly web app to discover your next great read!
 Booktopia uses the Google Books API to help users search, save, and explore books easily.
+
+[Live Demo (Coming Soon)](https://your-livdemo-link.com) | [GitHub Repository](https://github.com/aya-asylbek/booktopia-app)
+
+
+## 📖 Table of Contents
+- [About Booktopia](#about-booktopia)
+- [Technology Stack](#technology-stack)
+- [Features](#features)
+- [Database Schema](#database-schema)
+- [Installation & Setup](#installation--setup)
+- [Wireframes & User Flow](#wireframes--user-flow)
+- [Future Enhancements](#future-enhancements)
+
+
+📘 About Booktopia
+Booktopia makes book discovery seamless and fun!
+Users can search by author or title, view book covers, and save their favorite books — all inside a welcoming, minimalist design.
+
+🐣 Technology Stack
+Frontend:
+
+Backend:+
+
+Database:
+
+API:
+
+Concurrent Execution:
+
+Deployment:
+
+⭐ Features
+✅ Search for books by title or author using the Google Books API.
+
+✅ View book details (title, author, cover image).
+
+✅ Save books to a personal library (Favorites, Finished, To Read).
+
+✅ Minimalist UI with a clean and intuitive experience.
+
+Upcoming Features:
+
+Login/Registration
+
+Book Download Options
+
+🗃️ Database Schema
+📌 Full database structure is available in booktopia_dump.sql.
+
+sql
+Copy
+Edit
+-- Books Table
+CREATE TABLE books (
+  book_id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  author VARCHAR(255),
+  genre VARCHAR(100),
+  google_book_id VARCHAR(100) UNIQUE,
+  cover_image_url TEXT
+);
+
+-- Users Table
+CREATE TABLE users (
+  user_id SERIAL PRIMARY KEY,
+  username VARCHAR(100),
+  email VARCHAR(255),
+  password TEXT
+);
+
+-- Favorites Table
+CREATE TABLE favorites (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(user_id),
+  book_id INTEGER REFERENCES books(book_id)
+);
+⚙️ Installation & Setup
+1️⃣ Clone the Repository
+
+bash
+Copy
+Edit
+git clone https://github.com/aya-asylbek/booktopia-app.git
+cd booktopia-app
+2️⃣ Install Dependencies
+
+bash
+Copy
+Edit
+cd client && npm install
+cd ../server && npm install
+3️⃣ Set Up Environment Variables
+
+Create .env files in both client/ and server/
+
+Add your Google Books API Key.
+
+4️⃣ Set Up PostgreSQL Database
+
+bash
+Copy
+Edit
+cd server
+psql postgres -f booktopia_dump.sql
+5️⃣ Run the Project Option 1: Run Frontend & Backend Separately
+
+bash
+Copy
+Edit
+cd client && npm start
+# Open new terminal
+cd server && npm start
+Option 2: Run Both with Concurrently
+(Make sure concurrently is installed!)
+
+Add this to your package.json (server-side) under "scripts":
+
+json
+Copy
+Edit
+"scripts": {
+  "start": "node server.js",
+  "dev": "concurrently \"cd client && npm start\" \"cd server && npm start\""
+}
+Then run:
+
+bash
+Copy
+Edit
+npm run dev
+🎨 Wireframes & User Flow
+📌 Coming Soon!
+
+Landing Page: Search bar + book list.
+
+Register/Login Pages: Secure authentication.
+
+User Profile: Manage saved books.
+
+🚀 Future Enhancements
+User Login/Registration: For personalized book tracking.
+
+Sort Books: By category, rating, or reading status.
+
+Book Download Feature: (PDF/EPUB format).
+
+Add a Calendar: To track book releases.
+
+Mobile-Optimized UI & Animations.
+
+❤️ Acknowledgements
+A big THANK YOU to:
+
+Techtonica for mentorship.
+
+My collaborators & peers for support.
+
+The developer community for guidance.
+
