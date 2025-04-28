@@ -1,8 +1,11 @@
 # 📚 Booktopia App
+
 Welcome to Booktopia – your cozy, user-friendly web app to discover your next great read!  
 Booktopia uses the Google Books API to help users search, save, and explore books easily.
 
-[Live Demo on Render](https://booktopia-app-z.onrender.com) | [GitHub Repository](https://github.com/aya-asylbek/booktopia-app)
+[Live Demo on Render](https://booktopia-app-z.onrender.com) 
+
+[GitHub Repository](https://github.com/aya-asylbek/booktopia-app)
 
 ## Table of Contents
 - [About Booktopia](#about-booktopia)
