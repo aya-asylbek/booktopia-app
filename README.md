@@ -21,6 +21,7 @@ Booktopia uses the Google Books API to help users search, save, and explore book
 ---
 
 ## About Booktopia
+
 Booktopia makes book discovery seamless and fun!  
 Users can search by author or title, view book covers, and save their favorite books — all inside a welcoming, minimalist design.
  
@@ -55,7 +56,10 @@ Users can search by author or title, view book covers, and save their favorite b
 ---
 
 ## Database Schema
-📌 Full database structure is available in `booktopia_dump.sql`.
+- Install Postgres
+
+
+- 📌 Full database structure is available in `booktopia_dump.sql`.
 
 
 ![Diagram](https://github.com/user-attachments/assets/df799428-3d9b-4fcb-93f1-6547bcb4b755)
