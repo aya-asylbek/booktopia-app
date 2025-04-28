@@ -57,8 +57,7 @@ Users can search by author or title, view book covers, and save their favorite b
 
 ## Database Schema
 - Install Postgres
-
-
+- Create Database
 - 📌 Full database structure is available in `booktopia_dump.sql`.
 
 
