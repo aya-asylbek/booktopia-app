@@ -3,6 +3,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import fetch from 'node-fetch';
 import db from "./db.js";
+import bcrypt from 'bcrypt';
+import session from 'express-session';
 
 
 dotenv.config();  
@@ -10,8 +12,18 @@ dotenv.config();
 const app = express();
 const PORT = 3001;
 
-app.use(cors());  
-app.use(express.json());  
+//Middleware setup to connect to my frontend
+app.use(cors({ 
+  credentials: true, // Allow cookies to be sent
+  origin: 'http://localhost:5173' // Frontend
+}));
+app.use(express.json()); // Parse JSON request bodies
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'secret-key', // (Session secret(my sekret key in .env)
+  resave: false, // Don't save session 
+  saveUninitialized: false, 
+  cookie: { secure: false } 
+}));
 
 app.get('/', (req, res) => {
   res.send('Hello from the Booktopia backend!');
