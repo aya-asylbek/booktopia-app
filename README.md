@@ -83,13 +83,18 @@ CREATE TABLE favorites (
 git clone https://github.com/aya-asylbek/booktopia-app.git
 
 ```
+```
 cd booktopia-app
+```
 
 2️⃣ Install Dependencies
 
-
+```
 cd client && npm install
+```
+```
 cd ../server && npm install
+```
 
 3️⃣ Set Up Environment Variables
 
@@ -98,31 +103,40 @@ Create .env files in both client/ and server/
 Add your Google Books API Key.
 
 4️⃣ Set Up PostgreSQL Database
-
+```
 cd server
+```
+```
 psql postgres -f booktopia_dump.sql
+```
 
 5️⃣ Run the Project Option 1: Run Frontend & Backend Separately
 
+```
 cd client && npm start
-
+```
 # Open new terminal
 
+```
 cd server && npm start
+```
 
 Option 2: Run Both with Concurrently
 
 (Make sure concurrently is installed!)
 
 Add this to your package.json (server-side) under "scripts":
-
+```
 "scripts": {
   "start": "node server.js",
   "dev": "concurrently \"cd client && npm start\" \"cd server && npm start\""
 }
-Then run:
+```
 
+Then run:
+```
 npm run dev
+```
 
 ## Wireframes & User Flow
 
