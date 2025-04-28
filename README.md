@@ -118,6 +118,30 @@ cd ../server && npm install
 Create .env files in both client/ and server/
 
 Add your Google Books API Key.
+Google Books API Setup
+This project uses the Google Books API to fetch book data.
+You need an API key from Google to use it.
+
+Steps to Set Up:
+Go to the Google Cloud Console.
+
+Create a new project (or select an existing one).
+
+Navigate to APIs & Services > Library.
+
+Search for "Books API" and enable it.
+
+Go to APIs & Services > Credentials and click Create Credentials > API key.
+
+Copy your API key.
+
+Adding Your API Key:
+Option 1: (Recommended) Create a .env file in your project root and add:
+
+bash
+Copy
+Edit
+GOOGLE_BOOKS_API_KEY=your_api_key_here
 
 4️⃣ Set Up PostgreSQL Database
 ```
