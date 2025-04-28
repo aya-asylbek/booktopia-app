@@ -113,35 +113,37 @@ cd client && npm install
 cd ../server && npm install
 ```
 
-3️⃣ Set Up Environment Variables
+3️⃣ Set Up Environment Variables + Google Books API Setup
 
-Create .env files in both client/ and server/
-
-Add your Google Books API Key.
-Google Books API Setup
 This project uses the Google Books API to fetch book data.
 You need an API key from Google to use it.
 
 Steps to Set Up:
-Go to the Google Cloud Console.
+1.Go to the Google Cloud Console.
 
-Create a new project (or select an existing one).
+2.Create a new project (or select an existing one).
 
-Navigate to APIs & Services > Library.
+3.Navigate to APIs & Services > Library.
 
-Search for "Books API" and enable it.
+4.Search for "Books API" and enable it.
 
-Go to APIs & Services > Credentials and click Create Credentials > API key.
+5.Go to APIs & Services > Credentials and click Create Credentials > API key.
 
-Copy your API key.
+6.Copy your API key.
 
-Adding Your API Key:
-Option 1: (Recommended) Create a .env file in your project root and add:
+7.Adding Your API Key:
+8.Create a .env file in both the client/ and server/ directories.
 
-bash
-Copy
-Edit
+9.Inside each .env file, add the following line:
+```
 GOOGLE_BOOKS_API_KEY=your_api_key_here
+```
+
+Notes:
+
+10.Make sure .env is listed in your .gitignore file to prevent accidentally uploading sensitive information.
+
+11.If your project needs different configurations for client and server, adjust the environment variable names accordingly (e.g., REACT_APP_GOOGLE_BOOKS_API_KEY for React projects).
 
 4️⃣ Set Up PostgreSQL Database
 ```
