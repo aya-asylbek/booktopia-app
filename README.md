@@ -158,6 +158,8 @@ npm run dev
 ```
 The frontend will run on http://localhost:5173
 
+The backend will run on http://localhost:3001
+
 [Back to Table of Contents](#table-of-contents)
 
 ## Wireframes & User Flow
