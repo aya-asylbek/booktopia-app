@@ -20,9 +20,9 @@ Booktopia uses the Google Books API to help users search, save, and explore book
 ## About Booktopia
 Booktopia makes book discovery seamless and fun!  
 Users can search by author or title, view book covers, and save their favorite books — all inside a welcoming, minimalist design.
+ 
+ [Back to Table of Contents](#table-of-contents)
 
-[Back to Table of Contents](#table-of-contents)
----
 
 ## Technology Stack
 - **Frontend**: ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
@@ -31,6 +31,8 @@ Users can search by author or title, view book covers, and save their favorite b
 - **API**: ![Google Books API](https://img.shields.io/badge/Google%20Books%20API-4285F4?style=for-the-badge&logo=google&logoColor=white)
 - **Concurrent Execution**: ![Concurrently](https://img.shields.io/badge/Concurrently-FF6F61?style=for-the-badge)
 - **Deployment**: ![Render](https://img.shields.io/badge/Render-00A9E0?style=for-the-badge&logo=render&logoColor=white)
+
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
@@ -44,6 +46,8 @@ Users can search by author or title, view book covers, and save their favorite b
 - For personalized book tracking, allowing users to save books to a personal library (Favorites, Finished, To Read).
 
 - Book Download Feature: Provide options to download books in various formats, such as PDF and EPUB.
+
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
@@ -80,6 +84,7 @@ CREATE TABLE favorites (
   book_id INTEGER REFERENCES books(book_id)
 );
 ```
+[Back to Table of Contents](#table-of-contents)
 
 ## Installation & Setup
 
@@ -145,6 +150,7 @@ Then run:
 ```
 npm run dev
 ```
+[Back to Table of Contents](#table-of-contents)
 
 ## Wireframes & User Flow
 ![Wireframe](https://github.com/user-attachments/assets/834e288d-90fa-411e-82f8-5e61f1cd46ad)
@@ -180,16 +186,17 @@ User registration
 - Create a new account with a username, email, and password.
 - Once signed up, they can log in and save books.
 
-
- 
+[Back to Table of Contents](#table-of-contents)
 
 ## Acknowledgements
 
 A big THANK YOU to:
 
-Techtonica for mentorship.
+Techtonica program for mentorship.
 
 My collaborators & peers for support.
+
+[Back to Table of Contents](#table-of-contents)
 
 
 
