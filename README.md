@@ -21,6 +21,7 @@ Booktopia uses the Google Books API to help users search, save, and explore book
 Booktopia makes book discovery seamless and fun!  
 Users can search by author or title, view book covers, and save their favorite books — all inside a welcoming, minimalist design.
 
+[Back to Table of Contents](#table-of-contents)
 ---
 
 ## Technology Stack
