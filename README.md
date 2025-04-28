@@ -39,9 +39,10 @@ Users can search by author or title, view book covers, and save their favorite b
 - ✅ Minimalist UI with a clean and intuitive experience.
 
 ## Upcoming Features:  
-- Login/Registration
-- Save books to a personal library (Favorites, Finished, To Read- after Registration).
-- Book Download Options
+- User Login/Registration:
+- For personalized book tracking, allowing users to save books to a personal library (Favorites, Finished, To Read).
+
+- Book Download Feature: Provide options to download books in various formats, such as PDF and EPUB.
 
 ---
 
@@ -122,8 +123,10 @@ cd server && npm start
 ```
 
 Option 2: Run Both with Concurrently
-
-(Make sure concurrently is installed!)
+```
+npm install concurrently --save-dev
+```
+(Make sure concurrently is installed in root of project!)
 
 Add this to your package.json (server-side) under "scripts":
 ```
@@ -139,16 +142,39 @@ npm run dev
 ```
 
 ## Wireframes & User Flow
+Landing Page:
+
+- User lands on the homepage, where they can search for books.
+
+- Option to log in or sign up if they want personalized features (favorites, book tracking).
+
+Search for a Book:
+
+- User enters a book title or author into the search bar.
+
+- Results are displayed with book cover, title, and author.
 
 
- Future Enhancements
+Book Details Page:
+
+- User views the book’s cover image, description, and author details.
+
+- Option to save the book to their personal library (if logged in).
+
+User Login (if not logged in):
+
+- User clicks the "Login" button if they want to save books.
+
+- After logging in, user can view and save books to their personal library (favorites, finished, to read).
+- User can log out of their account after finishing.
+
+User registration 
+- If the user doesn’t have an account, they can click "Sign Up". 
+- Create a new account with a username, email, and password.
+- Once signed up, they can log in and save books.
 
 
-User Login/Registration: For personalized book tracking.
-Save books to a personal library (Favorites, Finished, To Read)
-
-Book Download Feature: (PDF/EPUB format).
-
+ 
 
 ## Acknowledgements
 
@@ -158,6 +184,6 @@ Techtonica for mentorship.
 
 My collaborators & peers for support.
 
-The developer community for guidance.
+
 
 
