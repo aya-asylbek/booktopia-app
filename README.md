@@ -2,7 +2,7 @@
 Welcome to Booktopia – your cozy, user-friendly web app to discover your next great read!  
 Booktopia uses the Google Books API to help users search, save, and explore books easily.
 
-[Live Demo (Coming Soon)](https://your-livdemo-link.com) | [GitHub Repository](https://github.com/aya-asylbek/booktopia-app)
+[Live Demo on Render ](https://booktopia-app-z.onrender.com) | [GitHub Repository](https://github.com/aya-asylbek/booktopia-app)
 
 ## 📖 Table of Contents
 - [About Booktopia](#about-booktopia)
@@ -34,8 +34,8 @@ Users can search by author or title, view book covers, and save their favorite b
 
 ## ⭐ Features
 - ✅ Search for books by title or author using the Google Books API.
-- ✅ View book details (title, author, cover image).
-- ✅ Save books to a personal library (Favorites, Finished, To Read).
+- ✅ View book details (title, author, cover image and etc).
+- ✅ Save books to a personal library (Favorites, Finished, To Read- after Registration).
 - ✅ Minimalist UI with a clean and intuitive experience.
 
 **Upcoming Features**:  
@@ -72,21 +72,23 @@ CREATE TABLE favorites (
   user_id INTEGER REFERENCES users(user_id),
   book_id INTEGER REFERENCES books(book_id)
 );
+
+
 ⚙️ Installation & Setup
+
 1️⃣ Clone the Repository
 
-bash
-Copy
-Edit`
+
 git clone https://github.com/aya-asylbek/booktopia-app.git
+
 cd booktopia-app
+
 2️⃣ Install Dependencies
 
-bash
-Copy
-Edit
+
 cd client && npm install
 cd ../server && npm install
+
 3️⃣ Set Up Environment Variables
 
 Create .env files in both client/ and server/
@@ -95,58 +97,46 @@ Add your Google Books API Key.
 
 4️⃣ Set Up PostgreSQL Database
 
-bash
-Copy
-Edit
 cd server
 psql postgres -f booktopia_dump.sql
+
 5️⃣ Run the Project Option 1: Run Frontend & Backend Separately
 
-bash
-Copy
-Edit
 cd client && npm start
+
 # Open new terminal
+
 cd server && npm start
+
 Option 2: Run Both with Concurrently
+
 (Make sure concurrently is installed!)
 
 Add this to your package.json (server-side) under "scripts":
 
-json
-Copy
-Edit
 "scripts": {
   "start": "node server.js",
   "dev": "concurrently \"cd client && npm start\" \"cd server && npm start\""
 }
 Then run:
 
-bash
-Copy
-Edit
 npm run dev
+
 🎨 Wireframes & User Flow
-📌 Coming Soon!
 
-Landing Page: Search bar + book list.
 
-Register/Login Pages: Secure authentication.
-
-User Profile: Manage saved books.
 
 🚀 Future Enhancements
-User Login/Registration: For personalized book tracking.
 
-Sort Books: By category, rating, or reading status.
+
+User Login/Registration: For personalized book tracking.
+Save books to a personal library (Favorites, Finished, To Read)
 
 Book Download Feature: (PDF/EPUB format).
 
-Add a Calendar: To track book releases.
-
-Mobile-Optimized UI & Animations.
 
 ❤️ Acknowledgements
+
 A big THANK YOU to:
 
 Techtonica for mentorship.
