@@ -74,7 +74,7 @@ CREATE TABLE favorites (
 );
 
 
-⚙️ Installation & Setup
+Installation & Setup
 
 1️⃣ Clone the Repository
 
@@ -122,11 +122,10 @@ Then run:
 
 npm run dev
 
-🎨 Wireframes & User Flow
+Wireframes & User Flow
 
 
-
-🚀 Future Enhancements
+ Future Enhancements
 
 
 User Login/Registration: For personalized book tracking.
@@ -135,7 +134,7 @@ Save books to a personal library (Favorites, Finished, To Read)
 Book Download Feature: (PDF/EPUB format).
 
 
-❤️ Acknowledgements
+Acknowledgements
 
 A big THANK YOU to:
 
