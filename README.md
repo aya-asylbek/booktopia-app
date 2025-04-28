@@ -142,6 +142,8 @@ npm run dev
 ```
 
 ## Wireframes & User Flow
+![Wireframe](https://github.com/user-attachments/assets/834e288d-90fa-411e-82f8-5e61f1cd46ad)
+
 Landing Page:
 
 - User lands on the homepage, where they can search for books.
