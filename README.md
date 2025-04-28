@@ -49,6 +49,10 @@ Users can search by author or title, view book covers, and save their favorite b
 ## Database Schema
 📌 Full database structure is available in `booktopia_dump.sql`.
 
+
+![Diagram](https://github.com/user-attachments/assets/df799428-3d9b-4fcb-93f1-6547bcb4b755)
+
+
 ```sql
 -- Books Table
 CREATE TABLE books (
