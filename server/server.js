@@ -71,6 +71,43 @@ app.post('/register', async (req, res) => {
   }
 });
 
+//Login query (Login with only email and password)
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body; // Only email and password
+
+  // Validate input
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Email and password are required' });
+  }
+
+  try {
+    // Check for user by email ONLY
+    const user = await db.oneOrNone(
+      'SELECT * FROM users WHERE email = $1',
+      [email]
+    );
+    
+    // Verify credentials
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      return res.status(401).json({ error: 'Invalid email or password' });
+    }
+    
+    // Create session
+    req.session.userId = user.user_id;
+    
+    // Return minimal user data (no password)
+    res.json({ 
+      user_id: user.user_id,
+      email: user.email
+      // Optional: include username if needed for frontend display
+      // username: user.username 
+    });
+    
+  } catch (err) {
+    console.error('Login error:', err);
+    res.status(500).json({ error: 'Login failed' });
+  }
+});
 
 
 
