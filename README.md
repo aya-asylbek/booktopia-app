@@ -1,8 +1,11 @@
 # 📚 Booktopia App
+
 Welcome to Booktopia – your cozy, user-friendly web app to discover your next great read!  
 Booktopia uses the Google Books API to help users search, save, and explore books easily.
 
-[Live Demo on Render](https://booktopia-app-z.onrender.com) | [GitHub Repository](https://github.com/aya-asylbek/booktopia-app)
+[Live Demo on Render](https://booktopia-app-z.onrender.com) 
+
+[GitHub Repository](https://github.com/aya-asylbek/booktopia-app)
 
 ## Table of Contents
 - [About Booktopia](#about-booktopia)
@@ -18,6 +21,7 @@ Booktopia uses the Google Books API to help users search, save, and explore book
 ---
 
 ## About Booktopia
+
 Booktopia makes book discovery seamless and fun!  
 Users can search by author or title, view book covers, and save their favorite books — all inside a welcoming, minimalist design.
  
@@ -52,8 +56,10 @@ Users can search by author or title, view book covers, and save their favorite b
 ---
 
 ## Database Schema
-📌 Full database structure is available in `booktopia_dump.sql`.
-
+- Install Postgres
+- Create Database
+- 📌 Full database structure is available in `booktopia_dump.sql`.
+- Create tables
 
 ![Diagram](https://github.com/user-attachments/assets/df799428-3d9b-4fcb-93f1-6547bcb4b755)
 
@@ -150,6 +156,10 @@ Then run:
 ```
 npm run dev
 ```
+The frontend will run on http://localhost:5173
+
+The backend will run on http://localhost:3001
+
 [Back to Table of Contents](#table-of-contents)
 
 ## Wireframes & User Flow
