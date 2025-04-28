@@ -25,6 +25,13 @@ app.use(session({
   cookie: { secure: false } 
 }));
 
+// Test database connection (booktopia)
+db.one('SELECT NOW()')
+  .then(() => console.log('✅ Database connected successfully'))
+  .catch(err => console.error('❌ Database connection error:', err));
+
+
+
 app.get('/', (req, res) => {
   res.send('Hello from the Booktopia backend!');
 });
