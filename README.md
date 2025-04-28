@@ -7,8 +7,8 @@ Booktopia uses the Google Books API to help users search, save, and explore book
 ## Table of Contents
 - [About Booktopia](#about-booktopia)
 - [Technology Stack](#technology-stack)
-- [MVP](#mvp)
-- [Future Enhancements](#future-enhancements)
+- [Features](#features)
+- [Upcoming Features](#upcoming-features)
 - [Database Schema](#database-schema)
 - [Installation & Setup](#installation--setup)
 - [Wireframes & User Flow](#wireframes--user-flow)
@@ -33,12 +33,12 @@ Users can search by author or title, view book covers, and save their favorite b
 
 ---
 
-## MVP
+## Features
 - ✅ Search for books by title or author using the Google Books API.
 - ✅ View book details (title, author, cover image and etc).
 - ✅ Minimalist UI with a clean and intuitive experience.
 
-**Upcoming Features**:  
+## Upcoming Features:  
 - Login/Registration
 - Save books to a personal library (Favorites, Finished, To Read- after Registration).
 - Book Download Options
@@ -79,9 +79,10 @@ CREATE TABLE favorites (
 
 1️⃣ Clone the Repository
 
-
+```
 git clone https://github.com/aya-asylbek/booktopia-app.git
 
+```
 cd booktopia-app
 
 2️⃣ Install Dependencies
