@@ -1,110 +1,59 @@
-📚 Booktopia App - Final Project Plan
-GitHub: Booktopia App Repository
-Table of Contents
+📚 Booktopia App
+Welcome to Booktopia – your cozy, user-friendly web app to discover your next great read!
+Booktopia uses the Google Books API to help users search, save, and explore books easily.
 
-Project Objective
+[Live Demo (Coming Soon)](https://your-livdemo-link.com) | [GitHub Repository](https://github.com/aya-asylbek/booktopia-app)
 
-Tech Stack
 
-Installation Instructions
+## 📖 Table of Contents
+- [About Booktopia](#about-booktopia)
+- [Technology Stack](#technology-stack)
+- [Features](#features)
+- [Database Schema](#database-schema)
+- [Installation & Setup](#installation--setup)
+- [Wireframes & User Flow](#wireframes--user-flow)
+- [Future Enhancements](#future-enhancements)
 
-Features
 
-Future Plans
+📘 About Booktopia
+Booktopia makes book discovery seamless and fun!
+Users can search by author or title, view book covers, and save their favorite books — all inside a welcoming, minimalist design.
 
-Database Schema
-
-Wireframe
-
-Work Milestones
-
-User Flow and Wireframes
-
-Style Guide
-
-1. 📑 Project Objective
-Booktopia is a cozy, user-friendly web app designed to help readers discover their next great read. By using the Google Books API, users can search for books by author, title, and genre. With its intuitive interface, Booktopia provides a seamless book discovery experience, where readers can save their favorite books and explore new titles in a welcoming, minimalist design.
-
-2. 🛠️ Tech Stack
-
-Tool	Role
-React.js	Frontend Library
-Node.js	Backend Framework
-Express.js	Web Framework
-PostgreSQL	Database
-Google Books API	API for Book Data
-Render	Deployment
-3. 💻 Installation Instructions
-Clone the repository
-
-bash
-Copy
-Edit
-git clone https://github.com/aya-asylbek/booktopia-app.git
-cd booktopia-app
-Install Dependencies
-Backend:
-
-bash
-Copy
-Edit
-cd backend
-npm install
+🐣 Technology Stack
 Frontend:
 
-bash
-Copy
-Edit
-cd frontend
-npm install
-Set Up PostgreSQL
-Create the database:
+Backend:+
 
-bash
-Copy
-Edit
-CREATE DATABASE booktopia;
-Configure Environment Variables
-Create a .env file and add your API keys and database credentials.
+Database:
 
-Run the App
-Backend:
+API:
 
-bash
-Copy
-Edit
-cd backend
-node server.js
-Frontend:
+Concurrent Execution:
 
-bash
-Copy
-Edit
-cd frontend
-npm start
-4. ✨ Features
-Book Search: Users can search for books by title or author.
+Deployment:
 
-Book List: Displays books from search results.
+⭐ Features
+✅ Search for books by title or author using the Google Books API.
 
-Save Books: Users can save their favorite books.
+✅ View book details (title, author, cover image).
 
-Minimalist Design: Clean, user-friendly interface.
+✅ Save books to a personal library (Favorites, Finished, To Read).
 
-User Registration (Future): Users can create accounts to save their books.
+✅ Minimalist UI with a clean and intuitive experience.
 
-5. 🚀 Future Plans
-User Authentication: Users can log in and save books.
+Upcoming Features:
 
-Advanced Book Management: Categorize books as "Favorites", "To Read", and "Finished".
+Login/Registration
 
-Book Downloads: Users can download books in PDF or EPUB format.
+Book Download Options
 
-6. 🗃️ Database Schema
-Books Table
+🗃️ Database Schema
+📌 Full database structure is available in booktopia_dump.sql.
+
 sql
 Copy
 Edit
+-- Books Table
 CREATE TABLE books (
   book_id SERIAL PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
@@ -113,90 +62,101 @@ CREATE TABLE books (
   google_book_id VARCHAR(100) UNIQUE,
   cover_image_url TEXT
 );
-Favorites Table
-sql
-Copy
-Edit
-CREATE TABLE favorites (
-  id SERIAL PRIMARY KEY,
-  book_id INTEGER REFERENCES books(book_id),
-  user_id INTEGER REFERENCES users(user_id)
-);
-Users Table (Future)
-sql
-Copy
-Edit
+
+-- Users Table
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY,
   username VARCHAR(100),
   email VARCHAR(255),
   password TEXT
 );
-7. 🖼️ Wireframe
-Landing Page: Search bar and book list.
 
-User Profile: Display saved books, categorized.
+-- Favorites Table
+CREATE TABLE favorites (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(user_id),
+  book_id INTEGER REFERENCES books(book_id)
+);
+⚙️ Installation & Setup
+1️⃣ Clone the Repository
 
-Book Card: Shows book details like title, author, and cover image.
+bash
+Copy
+Edit
+git clone https://github.com/aya-asylbek/booktopia-app.git
+cd booktopia-app
+2️⃣ Install Dependencies
 
-8. 🛠️ Work Milestones
-Week 1:
-Set up the Node.js backend with Express and PostgreSQL.
+bash
+Copy
+Edit
+cd client && npm install
+cd ../server && npm install
+3️⃣ Set Up Environment Variables
 
-Integrate Google Books API.
+Create .env files in both client/ and server/
 
-Build initial React app and wireframe design.
+Add your Google Books API Key.
 
-Deploy the app to Render.
+4️⃣ Set Up PostgreSQL Database
 
-Week 2:
-Create basic UI components for search results.
+bash
+Copy
+Edit
+cd server
+psql postgres -f booktopia_dump.sql
+5️⃣ Run the Project Option 1: Run Frontend & Backend Separately
 
-Implement error handling and validation.
+bash
+Copy
+Edit
+cd client && npm start
+# Open new terminal
+cd server && npm start
+Option 2: Run Both with Concurrently
+(Make sure concurrently is installed!)
 
-Start working on user registration feature.
+Add this to your package.json (server-side) under "scripts":
 
-Week 3:
-Finalize database schema and connect frontend with backend.
+json
+Copy
+Edit
+"scripts": {
+  "start": "node server.js",
+  "dev": "concurrently \"cd client && npm start\" \"cd server && npm start\""
+}
+Then run:
 
-Implement user authentication (if time permits).
+bash
+Copy
+Edit
+npm run dev
+🎨 Wireframes & User Flow
+📌 Coming Soon!
 
-Week 4:
-Bug fixes, UI adjustments, and deployment readiness.
+Landing Page: Search bar + book list.
 
-Finalize README documentation.
+Register/Login Pages: Secure authentication.
 
-9. 🚶‍♂️ User Flow and Wireframes
-User Flow:
+User Profile: Manage saved books.
 
-User lands on the homepage.
+🚀 Future Enhancements
+User Login/Registration: For personalized book tracking.
 
-User searches for books by title or author.
+Sort Books: By category, rating, or reading status.
 
-Book results are displayed.
+Book Download Feature: (PDF/EPUB format).
 
-User saves books to their profile (if registered).
+Add a Calendar: To track book releases.
 
-Wireframes:
+Mobile-Optimized UI & Animations.
 
-Landing Page: Includes a search bar and book list.
+❤️ Acknowledgements
+A big THANK YOU to:
 
-User Profile Page: Displays the list of saved books (with registration).
+Techtonica for mentorship.
 
-Book Cards: Displays book details like title, author, and cover image.
+My collaborators & peers for support.
 
-10. 🎨 Style Guide
-Audience:
-Book lovers and readers who want to organize and discover new books.
+The developer community for guidance.
 
-App Category:
-Books, Entertainment, Personal Library
-
-Colors:
-Main Color: Soft Blue (#6C9BCF)
-
-Accent Color: Light Yellow (#F7D774)
-
-Background: Light Gray (#F9F9F9)
-
-Text: Dark Gray (#333333)
