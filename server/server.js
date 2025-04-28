@@ -32,6 +32,48 @@ db.one('SELECT NOW()')
 
 
 
+//User Registration Endpoint-->POST /register-->>>Required fields: username,email, password
+ 
+app.post('/register', async (req, res) => {
+  const { username, email, password } = req.body;
+
+  // Validate all fields
+  if (!username || !email || !password) {
+    return res.status(400).json({ 
+      error: 'Username, email, and password are all required' 
+    });
+  }
+
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    
+    //SQL query to add to db booktopia
+    const user = await db.one(
+      `INSERT INTO users (username, email, password) 
+       VALUES ($1, $2, $3) 
+       RETURNING user_id, username, email`,  // Return user_id instead of id
+      [username, email, hashedPassword]
+    );
+    
+    req.session.userId = user.user_id; 
+    res.status(201).json(user);
+    
+  } catch (err) {
+    // Handle duplicate username/email
+    if (err.code === '23505') {
+      const field = err.constraint.includes('username') ? 'Username' : 'Email';
+      return res.status(409).json({ 
+        error: `${field} already exists` 
+      });
+    }
+    console.error('Registration error:', err);
+    res.status(500).json({ error: 'Registration failed' });
+  }
+});
+
+
+
+
 app.get('/', (req, res) => {
   res.send('Hello from the Booktopia backend!');
 });
