@@ -43,7 +43,23 @@ app.post('/register', async (req, res) => {
       error: 'Username, email, and password are all required' 
     });
   }
+   // Email format validation
+   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return res.status(400).json({ error: 'Invalid email format' });
+  }
+ // Password strength validation
+ if (password.length < 8) {
+  return res.status(400).json({ 
+    error: 'Password must be at least 8 characters' 
+  });
+}
 
+//Username validation
+if (username.length < 3 || username.length > 20) {
+  return res.status(400).json({
+    error: 'Username must be between 3-20 characters'
+  });
+}
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
     
