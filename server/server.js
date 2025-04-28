@@ -110,7 +110,29 @@ app.post('/login', async (req, res) => {
 });
 
 
+// User Logout Endpoint-->>POST /logout
 
+app.post('/logout', (req, res) => {
+  // Leave the session
+  req.session.destroy((err) => {
+    if (err) {
+      console.error('Logout error:', err);
+      return res.status(500).json({ error: 'Logout failed' });
+    }
+    
+    // Clear the session cookie
+    res.clearCookie('connect.sid', {
+      path: '/',
+      httpOnly: true,
+      sameSite: 'strict'
+    });
+    
+    res.json({ message: 'Logged out successfully' });
+  });
+});
+
+
+// Server
 app.get('/', (req, res) => {
   res.send('Hello from the Booktopia backend!');
 });
