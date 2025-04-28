@@ -2,9 +2,9 @@
 Welcome to Booktopia – your cozy, user-friendly web app to discover your next great read!  
 Booktopia uses the Google Books API to help users search, save, and explore books easily.
 
-[Live Demo on Render ](https://booktopia-app-z.onrender.com) | [GitHub Repository](https://github.com/aya-asylbek/booktopia-app)
+[Live Demo on Render](https://booktopia-app-z.onrender.com) | [GitHub Repository](https://github.com/aya-asylbek/booktopia-app)
 
-## 📖 Table of Contents
+## Table of Contents
 - [About Booktopia](#about-booktopia)
 - [Technology Stack](#technology-stack)
 - [Features](#features)
@@ -16,13 +16,13 @@ Booktopia uses the Google Books API to help users search, save, and explore book
 
 ---
 
-## 📘 About Booktopia
+## About Booktopia
 Booktopia makes book discovery seamless and fun!  
 Users can search by author or title, view book covers, and save their favorite books — all inside a welcoming, minimalist design.
 
 ---
 
-## 🐣 Technology Stack
+## Technology Stack
 - **Frontend**: ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 - **Backend**: ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) + ![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
 - **Database**: ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
@@ -32,7 +32,7 @@ Users can search by author or title, view book covers, and save their favorite b
 
 ---
 
-## ⭐ Features
+## Features
 - ✅ Search for books by title or author using the Google Books API.
 - ✅ View book details (title, author, cover image and etc).
 - ✅ Save books to a personal library (Favorites, Finished, To Read- after Registration).
@@ -44,7 +44,7 @@ Users can search by author or title, view book covers, and save their favorite b
 
 ---
 
-## 🗃️ Database Schema
+## Database Schema
 📌 Full database structure is available in `booktopia_dump.sql`.
 
 ```sql
