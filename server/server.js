@@ -3,6 +3,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import fetch from 'node-fetch';
 import db from "./db.js";
+import bcrypt from 'bcrypt';
+import session from 'express-session';
 
 
 dotenv.config();  
@@ -10,9 +12,143 @@ dotenv.config();
 const app = express();
 const PORT = 3001;
 
-app.use(cors());  
-app.use(express.json());  
+//Middleware setup to connect to my frontend
+app.use(cors({ 
+  credentials: true, // Allow cookies to be sent
+  origin: 'http://localhost:5173' // Frontend
+}));
+app.use(express.json()); // Parse JSON request bodies
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'secret-key', // (Session secret(my sekret key in .env)
+  resave: false, // Don't save session 
+  saveUninitialized: false, 
+  cookie: { secure: false } 
+}));
 
+// Test database connection (booktopia)
+db.one('SELECT NOW()')
+  .then(() => console.log('✅ Database connected successfully'))
+  .catch(err => console.error('❌ Database connection error:', err));
+
+
+
+//User Registration Endpoint-->POST /register-->>>Required fields: username,email, password
+ 
+app.post('/register', async (req, res) => {
+  const { username, email, password } = req.body;
+
+  // Validate all fields
+  if (!username || !email || !password) {
+    return res.status(400).json({ 
+      error: 'Username, email, and password are all required' 
+    });
+  }
+   // Email format validation
+   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return res.status(400).json({ error: 'Invalid email format' });
+  }
+ // Password strength validation
+ if (password.length < 8) {
+  return res.status(400).json({ 
+    error: 'Password must be at least 8 characters' 
+  });
+}
+
+//Username validation
+if (username.length < 3 || username.length > 20) {
+  return res.status(400).json({
+    error: 'Username must be between 3-20 characters'
+  });
+}
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    
+    //SQL query to add to db booktopia
+    const user = await db.one(
+      `INSERT INTO users (username, email, password) 
+       VALUES ($1, $2, $3) 
+       RETURNING user_id, username, email`,  // Return user_id instead of id
+      [username, email, hashedPassword]
+    );
+    
+    req.session.userId = user.user_id; 
+    res.status(201).json(user);
+    
+  } catch (err) {
+    // Handle duplicate username/email
+    if (err.code === '23505') {
+      const field = err.constraint.includes('username') ? 'Username' : 'Email';
+      return res.status(409).json({ 
+        error: `${field} already exists` 
+      });
+    }
+    console.error('Registration error:', err);
+    res.status(500).json({ error: 'Registration failed' });
+  }
+});
+
+//Login query (Login with only email and password)
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body; // Only email and password
+
+  // Validate input
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Email and password are required' });
+  }
+
+  try {
+    // Check for user by email ONLY
+    const user = await db.oneOrNone(
+      'SELECT * FROM users WHERE email = $1',
+      [email]
+    );
+    
+    // Verify credentials
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      return res.status(401).json({ error: 'Invalid email or password' });
+    }
+    
+    // Create session
+    req.session.userId = user.user_id;
+    
+    // Return minimal user data (no password)
+    res.json({ 
+      user_id: user.user_id,
+      email: user.email
+      // Optional: include username if needed for frontend display
+      // username: user.username 
+    });
+    
+  } catch (err) {
+    console.error('Login error:', err);
+    res.status(500).json({ error: 'Login failed' });
+  }
+});
+
+
+// User Logout Endpoint-->>POST /logout
+
+app.post('/logout', (req, res) => {
+  // Leave the session
+  req.session.destroy((err) => {
+    if (err) {
+      console.error('Logout error:', err);
+      return res.status(500).json({ error: 'Logout failed' });
+    }
+    
+    // Clear the session cookie
+    res.clearCookie('connect.sid', {
+      path: '/',
+      httpOnly: true,
+      sameSite: 'strict'
+    });
+    
+    res.json({ message: 'Logged out successfully' });
+  });
+});
+
+
+// Server
 app.get('/', (req, res) => {
   res.send('Hello from the Booktopia backend!');
 });
