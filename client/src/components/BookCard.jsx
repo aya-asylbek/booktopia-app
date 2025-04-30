@@ -1,7 +1,8 @@
 import React from "react";
 
 const BookCard = ({ book }) => {
-  const defaultCover = "https://via.placeholder.com/150?text=No+Image";
+  const defaultCover = "https://placehold.co/150x220?text=No+Image";
+
 
   return (
     <div className="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center border hover:shadow-xl transition duration-300">
