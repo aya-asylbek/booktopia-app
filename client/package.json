@@ -9,7 +9,9 @@
     "lint": "eslint .",
     "preview": "vite preview --host",
     "test": "jest --watchAll",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "build:css": "tailwindcss build src/styles/tailwind.css -o src/styles/output.css",
+    "watch:css": "tailwindcss build src/styles/tailwind.css -o src/styles/output.css --watch"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -21,6 +23,8 @@
     "@babel/preset-env": "^7.26.9",
     "@babel/preset-react": "^7.26.3",
     "@eslint/js": "^9.25.0",
+    "@tailwindcss/postcss": "^4.1.4",
+    "@tailwindcss/postcss7-compat": "^2.2.17",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@types/react": "^19.0.10",

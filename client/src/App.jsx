@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import Header from "./components/Header.jsx";
 import SearchBar from "./components/SearchBar.jsx";
 import BookList from "./components/BookList.jsx";
-import './App.css'; 
+import './styles/tailwind.css';
+import './App.css';
+
 
 
 
@@ -21,7 +23,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-screen border-2 border-red-500">
         <Header />
       <SearchBar onSearch={handleSearch} />
       
