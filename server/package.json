@@ -21,7 +21,6 @@
     "pg-promise": "^11.13.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.9",
-    "tailwindcss": "^4.1.4"
+    "nodemon": "^3.1.9"
   }
 }

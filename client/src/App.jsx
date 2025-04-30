@@ -23,12 +23,10 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen border-2 border-red-500">
+    <div className="min-h-screen bg-gray-100 px-4 py-6">
         <Header />
       <SearchBar onSearch={handleSearch} />
-      
-      {error && <p style={{ color: "red" }}>{error}</p>} 
-      
+      {error && <p className="text-red-500 text-center mb-4">{error}</p>}
       <BookList books={books} />
     </div>
   );
