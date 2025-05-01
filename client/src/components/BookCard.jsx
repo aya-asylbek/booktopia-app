@@ -15,7 +15,8 @@ const BookCard = ({ book }) => {
   return (
     <div>
       <div
-        className="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center border hover:shadow-xl transition duration-300 cursor-pointer"
+        className="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center border hover:shadow-xl transition duration-300 cursor-pointer h-[340px]"
+
         onClick={openModal} // Open the modal when the card is clicked
       >
         <img
