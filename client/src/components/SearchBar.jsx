@@ -9,7 +9,7 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2 justify-center mb-6">
+    <form onSubmit={handleSubmit} className="flex gap-2 justify-center mt-40 mb-6">
       <input
         type="text"
         placeholder="Search by title or author"
