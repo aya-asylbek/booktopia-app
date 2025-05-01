@@ -2,7 +2,11 @@ import React from 'react';
 
 const BookView = ({ book, onClose }) => {
     return (
-        <div className="fixed inset-0 flex justify-center items-center bg-gray-200 bg-opacity-70 z-50">
+        <div
+        className="fixed inset-0 flex justify-center items-center bg-cover bg-center bg-no-repeat z-50"
+        style={{ backgroundImage: "url('/book2.jpg')" }}
+      >
+              
             <div className="bg-white p-6 rounded-lg shadow-xl max-w-lg w-full relative">
                 {/* button to close modal */}
                 <button
