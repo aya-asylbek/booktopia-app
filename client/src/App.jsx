@@ -10,7 +10,10 @@ const App = () => {
   const [error, setError] = useState(null);
 
   const handleSearch = async (query) => {
-    try {
+    if (query.trim() === "") {
+      return; //if user didn't search for book,button will not work
+    }
+  try {
       const res = await fetch(`http://localhost:3001/search?q=${query}`);
       const data = await res.json();
       setBooks(data);
