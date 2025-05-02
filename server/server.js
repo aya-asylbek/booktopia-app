@@ -177,6 +177,7 @@ app.get('/search', async (req, res) => {
           title: item.volumeInfo.title,
           author: item.volumeInfo.authors?.[0] || 'Unknown Author',
           cover: item.volumeInfo.imageLinks?.thumbnail || '',
+          description: item.volumeInfo.description || 'No description available.'
         }))
       );
     } catch (error) {
