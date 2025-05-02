@@ -13,7 +13,7 @@ const App = () => {
       return; //if user didn't search for book,button will not work
     }
     try {
-      const res = await fetch(`http://localhost:3001/search?q=${query}`);
+      const res = await fetch(`https://booktopia-app-e99a.onrender.com/search?q=${query}`);
       const data = await res.json();
       setBooks(data);
     } catch (err) {

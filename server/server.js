@@ -12,11 +12,23 @@ dotenv.config();
 const app = express();
 const PORT = 3001;
 
-//Middleware setup to connect to my frontend
-app.use(cors({ 
-  credentials: true, // Allow cookies to be sent
-  origin: 'http://localhost:5173' // Frontend
+//Middleware setup to connect to my frontend and render url
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://booktopia-app-z.onrender.com'
+];
+
+app.use(cors({
+  credentials: true,
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
+
 app.use(express.json()); // Parse JSON request bodies
 app.use(session({
   secret: process.env.SESSION_SECRET || 'secret-key', // (Session secret(my sekret key in .env)

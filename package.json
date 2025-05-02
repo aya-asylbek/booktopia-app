@@ -11,6 +11,7 @@
     "nodemon": "^2.0.22"
   },
   "dependencies": {
+    "dotenv": "^16.5.0",
     "tailwindcss": "^4.1.4"
   }
 }

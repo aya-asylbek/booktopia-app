@@ -1,22 +1,25 @@
 import pgPromise from "pg-promise";
 import { config } from "dotenv";
+
 // Load environment variables from .env file
 config();
+
 const pgp = pgPromise();
+
+const { DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD } = process.env;
+
 // Connect to the PostgreSQL database
 const db = pgp({
- host: process.env.DB_HOST,
- port: process.env.DB_PORT,
- database: process.env.DB_DATABASE,
- user: process.env.DB_USER,
+  host: DB_HOST,
+  port: Number(DB_PORT), 
+  database: DB_NAME, 
+  user: DB_USER,
+  password: DB_PASSWORD,
+  ssl: {
+    rejectUnauthorized: false, 
+  }
 });
-// // Test the connection with a query
-// db.any('SELECT NOW()') // Checking- testing the current time from the database
-//   .then((data) => {
-//     console.log('Connected to the database');
-//     console.log('Database time:', data); // Prints the current time from the DB
-//   })
-//   .catch((err) => {
-//     console.error('Database connection error:', err.message);
-//   });
+
+//console.log("Loaded DB password:", process.env.DB_PASSWORD); // ✅ Should not be undefined
+
 export default db;

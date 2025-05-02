@@ -28,9 +28,9 @@ CREATE TABLE public.books (
     book_id integer NOT NULL,
     title character varying(255) NOT NULL,
     author character varying(255),
-    genre character varying(255),
     google_book_id character varying(100),
-    cover_image_url text
+    cover_image_url text,
+    description text
 );
 
 
@@ -154,7 +154,7 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 -- Data for Name: books; Type: TABLE DATA; Schema: public; Owner: tpl522_13
 --
 
-COPY public.books (book_id, title, author, genre, google_book_id, cover_image_url) FROM stdin;
+COPY public.books (book_id, title, author, google_book_id, cover_image_url, description) FROM stdin;
 \.
 
 
@@ -171,6 +171,10 @@ COPY public.favorites (id, user_id, book_id) FROM stdin;
 --
 
 COPY public.users (user_id, username, email, password) FROM stdin;
+1	testuser	test@example.com	$2b$10$3DhtwvRLmmsg20lFaH/o2OtVF6GbIsgUNjqemcwq81Ck4DUT565yS
+5	testuser1	test1@example.com	$2b$10$UMOnzlbjv9kv67h3VKUqZOdMxGOhBixCY97LytoGBeLFXP.EnHz1m
+6	AyaAsylbek	ssupataev@yahoo.com	$2b$10$SNBjcftWPSSSlIY4vvPxlezlB2u7HTVPDOkYODHxii5faP.FHadjC
+8	aichurek0990	aichurek0990@example.com	$2b$10$GAdIkYdI4gfazjYf8.o8q.83idkajAH85lzrdStm8RR26FlNUmV2C
 \.
 
 
@@ -192,7 +196,7 @@ SELECT pg_catalog.setval('public.favorites_id_seq', 1, false);
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tpl522_13
 --
 
-SELECT pg_catalog.setval('public.users_user_id_seq', 1, false);
+SELECT pg_catalog.setval('public.users_user_id_seq', 8, true);
 
 
 --
