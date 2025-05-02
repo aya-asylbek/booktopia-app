@@ -10,7 +10,7 @@ import session from 'express-session';
 dotenv.config();  
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 //Middleware setup to connect to my frontend
 app.use(cors({ 
