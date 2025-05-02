@@ -15,7 +15,8 @@ const PORT = 3001;
 //Middleware setup to connect to my frontend and render url
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://booktopia-app-z.onrender.com'
+  'https://booktopia-app-z.onrender.com',
+  'https://booktopia-app-e99a.onrender.com' 
 ];
 
 app.use(cors({
