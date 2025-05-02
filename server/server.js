@@ -13,10 +13,17 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 //Middleware setup to connect to my frontend
-app.use(cors({ 
-  credentials: true, // Allow cookies to be sent
-  origin: 'http://localhost:5173' // Frontend
+const allowedOrigins = [
+  'http://localhost:5173',//local 
+  'https://booktopia-app-z.onrender.com'//Deployed frontend on Render
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
 }));
+
+
 app.use(express.json()); // Parse JSON request bodies
 app.use(session({
   secret: process.env.SESSION_SECRET || 'secret-key', // (Session secret(my sekret key in .env)
