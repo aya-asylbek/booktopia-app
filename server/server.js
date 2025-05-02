@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import fetch from 'node-fetch';
-import db from "./db.js";
+import db, { pool } from "./db.js";
 import bcrypt from 'bcrypt';
 import session from 'express-session';
 import pgSession from 'connect-pg-simple'; 
@@ -42,7 +42,7 @@ app.use(express.json());
 
 app.use(session({
   store: new PgSession({
-    pool: db.$pool,
+    pool: pool,
     tableName: 'user_sessions',
     createTableIfMissing: false, // table created in postgres
     pruneSessionInterval: 3600 // will clean session after 1 hour
