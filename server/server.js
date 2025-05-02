@@ -5,12 +5,15 @@ import fetch from 'node-fetch';
 import db from "./db.js";
 import bcrypt from 'bcrypt';
 import session from 'express-session';
+import pgSession from 'connect-pg-simple'; 
 
 
+const PgSession = pgSession(session);
 dotenv.config();  
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
+
 
 //Middleware setup to connect to my frontend and render url
 const allowedOrigins = [
@@ -19,13 +22,11 @@ const allowedOrigins = [
   'https://booktopia-app-e99a.onrender.com' 
 ];
 
+
 app.use(cors({
   credentials: true,
   origin: function (origin, callback) {
-    // Разрешаем запросы без origin (например, Postman)
     if (!origin) return callback(null, true);
-    
-    // Логируем все входящие origin для отладки
     console.log('Request origin:', origin);
     
     if (allowedOrigins.some(allowed => origin.startsWith(allowed))) {
@@ -37,13 +38,26 @@ app.use(cors({
   }
 }));
 
-app.use(express.json()); // Parse JSON request bodies
+app.use(express.json());
+
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'secret-key', // (Session secret(my sekret key in .env)
-  resave: false, // Don't save session 
-  saveUninitialized: false, 
-  cookie: { secure: false } 
+  store: new PgSession({
+    pool: db.$pool,
+    tableName: 'user_sessions',
+    createTableIfMissing: false, // table created in postgres
+    pruneSessionInterval: 3600 // will clean session after 1 hour
+  }),
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: true, // Only HTTPS
+    sameSite: 'none', // cross domen requests
+    httpOnly: true, 
+    maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days
+  }
 }));
+
 
 // Test database connection (booktopia)
 db.one('SELECT NOW()')
