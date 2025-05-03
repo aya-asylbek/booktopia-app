@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import SearchBar from "./components/SearchBar.jsx";
 import BookList from "./components/BookList.jsx";
+import Navbar from './components/NavBar.jsx';
 import './styles/tailwind.css';
 
 const App = () => {
@@ -22,24 +24,27 @@ const App = () => {
     }
   };
 
+  
   return (
-    <div className="relative h-screen overflow-hidden">
-      {/* Чистое фоновое изображение без оверлея */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-        style={{ backgroundImage: "url('/book2.jpg')" }}
-      />
-      
-      {/* Контент */}
-      <div className="relative z-10 h-full flex flex-col">
-        <Header />
-        <div className="flex-1 overflow-y-auto pt-16 pb-4">
-          <SearchBar onSearch={handleSearch} />
-          {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-          <BookList books={books} />
+    <Router>
+      <Navbar /> {/*renders the Navbar */}
+      <div className="relative h-screen overflow-hidden">
+        {/* Background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+          style={{ backgroundImage: "url('/book2.jpg')" }}
+        />
+        
+        {/* Content */}
+        <div className="relative z-10 h-full flex flex-col">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
         </div>
       </div>
-    </div>
+    </Router>
   );
 };
 
