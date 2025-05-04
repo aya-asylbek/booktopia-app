@@ -244,7 +244,98 @@ app.get('/search', async (req, res) => {
     res.status(500).json({ error: 'Something went wrong' });
   }
 });
+// ====================== FAVORITES ROUTES =Nice to have feature====================== //
 
+// Middleware to check autorization
+const requireAuth = (req, res, next) => {
+  if (!req.session.userId) {
+    return res.status(401).json({ error: 'Not authorized' });
+  }
+  next();
+};
+
+// Adding book to favorites
+app.post('/api/favorites/:bookId', requireAuth, async (req, res) => {
+  try {
+    const { bookId } = req.params;
+    const userId = req.session.userId;
+
+    // Checking if book already in favorites
+    const exists = await db.oneOrNone(
+      'SELECT 1 FROM favorites WHERE user_id = $1 AND book_id = $2',
+      [userId, bookId]
+    );
+
+    if (exists) {
+      return res.status(409).json({ error: 'Book already in favorites' });
+    }
+
+    // adding to table favorites
+    await db.none(
+      'INSERT INTO favorites (user_id, book_id) VALUES ($1, $2)',
+      [userId, bookId]
+    );
+
+    res.json({ success: true });
+  } catch (err) {
+    console.error('Error adding favorite:', err);
+    res.status(500).json({ error: 'Failed to add favorite' });
+  }
+});
+
+// Deleting from favorites
+app.delete('/api/favorites/:bookId', requireAuth, async (req, res) => {
+  try {
+    const { bookId } = req.params;
+    const userId = req.session.userId;
+
+    await db.none(
+      'DELETE FROM favorites WHERE user_id = $1 AND book_id = $2',
+      [userId, bookId]
+    );
+
+    res.json({ success: true });
+  } catch (err) {
+    console.error('Error removing favorite:', err);
+    res.status(500).json({ error: 'Failed to remove favorite' });
+  }
+});
+
+// check if book in favorites
+app.get('/api/favorites/check/:bookId', requireAuth, async (req, res) => {
+  try {
+    const { bookId } = req.params;
+    const userId = req.session.userId;
+
+    const result = await db.oneOrNone(
+      'SELECT EXISTS (SELECT 1 FROM favorites WHERE user_id = $1 AND book_id = $2)',
+      [userId, bookId]
+    );
+
+    res.json({ isFavorite: result.exists });
+  } catch (err) {
+    console.error('Error checking favorite:', err);
+    res.status(500).json({ error: 'Failed to check favorite' });
+  }
+});
+
+// Get all books from favourites
+app.get('/api/favorites', requireAuth, async (req, res) => {
+  try {
+    const userId = req.session.userId;
+
+    const favorites = await db.any(`
+      SELECT books.* FROM favorites
+      JOIN books ON favorites.book_id = books.id
+      WHERE favorites.user_id = $1
+    `, [userId]);
+
+    res.json(favorites);
+  } catch (err) {
+    console.error('Error fetching favorites:', err);
+    res.status(500).json({ error: 'Failed to fetch favorites' });
+  }
+});
 
 
 
