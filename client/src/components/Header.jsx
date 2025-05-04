@@ -1,15 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Header = () => {
-  return (
-    <header className="fixed top-0 w-full p-4 z-20 bg-transparent">
-      <h1 className="text-3xl font-bold text-white drop-shadow-md">
-        📚 Booktopia
-      </h1>
-    </header>
-  );
-};
+const Header = () => (
+  <header className="flex justify-between items-center bg-black bg-opacity-60 text-white px-6 py-4">
+    <h1 className="text-xl font-bold">Booktopia</h1>
+    <nav className="space-x-4">
+      <Link to="/" className="hover:underline">Home</Link>
+      <Link to="/login" className="hover:underline">Login</Link>
+      <Link to="/register" className="hover:underline">Register</Link>
+    </nav>
+  </header>
+);
 
 export default Header;
-
-

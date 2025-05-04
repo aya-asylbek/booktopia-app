@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import SearchBar from "./components/SearchBar.jsx";
 import BookList from "./components/BookList.jsx";
-import Navbar from './components/NavBar.jsx';
+import Home from "./components/Home.jsx";
+import Login from "./components/Login.jsx";
+import Register from "./components/Register.jsx";
 import './styles/tailwind.css';
 
 const App = () => {
@@ -12,7 +14,7 @@ const App = () => {
 
   const handleSearch = async (query) => {
     if (query.trim() === "") {
-      return; //if user didn't search for book,button will not work
+      return; //if user didn't search for book, button will not work
     }
     try {
       const res = await fetch(`https://booktopia-app-e99a.onrender.com/search?q=${query}`);
@@ -24,11 +26,9 @@ const App = () => {
     }
   };
 
-  
   return (
     <Router>
-      <Navbar /> {/*renders the Navbar */}
-      <div className="relative h-screen overflow-hidden">
+      <div className="relative min-h-screen overflow-auto"> {/* Обновил классы для прокрутки */}
         {/* Background image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
@@ -36,9 +36,10 @@ const App = () => {
         />
         
         {/* Content */}
-        <div className="relative z-10 h-full flex flex-col">
+        <div className="relative z-10 flex flex-col min-h-screen">
+          <Header />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home onSearch={handleSearch} books={books} />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>

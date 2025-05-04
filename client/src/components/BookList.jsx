@@ -3,8 +3,8 @@ import BookCard from "./BookCard";
 
 const BookList = ({ books }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {books.map((book) => (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 overflow-y-auto">
+      {books.slice(0, 20).map((book) => (
         <BookCard key={book.id} book={book} />
       ))}
     </div>
