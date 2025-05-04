@@ -174,7 +174,8 @@ app.post('/logout', (req, res) => {
     res.clearCookie('connect.sid', {
       path: '/',
       httpOnly: true,
-      sameSite: 'strict'
+      sameSite: 'none',
+      secure: true
     });
 
     res.json({ message: 'Logged out successfully' });
