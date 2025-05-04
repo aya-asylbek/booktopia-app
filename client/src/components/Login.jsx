@@ -59,17 +59,16 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
-        console.log("Login successful:", data);
-        // Saving user in state 
-        setUser(data);  // sample: setUser({email: data.email, userId: data.user_id})
-      } else {
-        console.error(data.error || "Invalid credentials");
+        localStorage.setItem("token", data.token);
+        setUser(data.user);
+        // returning user to book
+        const returnUrl = new URLSearchParams(window.location.search).get('returnUrl') || '/';
+        window.location.href = returnUrl; 
       }
     } catch (err) {
-      console.error("Error during login:", err);
+      console.error("Login error:", err);
     }
   };
-
 
 return (
     <div className="max-w-md mx-auto mt-10 bg-white p-6 rounded shadow">
