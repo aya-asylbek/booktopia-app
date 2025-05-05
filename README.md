@@ -35,6 +35,7 @@ Users can search by author or title, view book covers, and save their favorite b
 - **API**: ![Google Books API](https://img.shields.io/badge/Google%20Books%20API-4285F4?style=for-the-badge&logo=google&logoColor=white)
 - **Concurrent Execution**: ![Concurrently](https://img.shields.io/badge/Concurrently-FF6F61?style=for-the-badge)
 - **Deployment**: ![Render](https://img.shields.io/badge/Render-00A9E0?style=for-the-badge&logo=render&logoColor=white)
+- **Tailwind**
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -42,7 +43,17 @@ Users can search by author or title, view book covers, and save their favorite b
 
 ## Features
 - ✅ Search for books by title or author using the Google Books API.
+- ![Landing page](https://github.com/user-attachments/assets/1558be03-553d-4fa8-a1cd-3b368adc1642)
+
 - ✅ View book details (title, author, cover image and etc).
+- By title:
+
+https://github.com/user-attachments/assets/29b1099b-86de-4186-a067-254bac424fb7
+- By author:
+- ![Search book by author](https://github.com/user-attachments/assets/de0137ec-aa1a-485f-a3ce-e43db8114325)
+- Book view
+- ![Book View](https://github.com/user-attachments/assets/3ca58645-57a5-4d21-9b04-73875fc59ec3)
+
 - ✅ Minimalist UI with a clean and intuitive experience.
 
 ## Upcoming Features:  
