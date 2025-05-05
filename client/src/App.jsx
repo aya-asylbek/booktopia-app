@@ -24,13 +24,13 @@ const App = () => {
 
   return (
     <div className="relative h-screen overflow-hidden">
-      {/* Чистое фоновое изображение без оверлея */}
+      {/* no overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
         style={{ backgroundImage: "url('/book2.jpg')" }}
       />
       
-      {/* Контент */}
+      {/* Content */}
       <div className="relative z-10 h-full flex flex-col">
         <Header />
         <div className="flex-1 overflow-y-auto pt-16 pb-4">
